@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
+
 function App() {
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
   const trips = [
     {
       id: 1,
@@ -26,12 +29,17 @@ function App() {
   ];
 
   const onSelectTrip = (trip: Trip) => {
-    console.log(trip);
+    setSelectedTrip(trip);
   };
-
+  console.log(selectedTrip);
   return (
     <>
-      <TripList trips={trips} onSelectTrip={onSelectTrip} />
+      <h1>Weather Forecast</h1>
+      <TripList
+        trips={trips}
+        onSelectTrip={onSelectTrip}
+        selectedTrip={selectedTrip}
+      />
     </>
   );
 }

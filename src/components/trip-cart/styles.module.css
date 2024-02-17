@@ -1,6 +1,16 @@
 .trip-photo {
   width: 300px;
 }
+
 .trip-card {
   margin: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.trip-card:hover {
+  border: 1px solid blue;
+}
+
+.selected {
+  border: 1px solid blue;
 }

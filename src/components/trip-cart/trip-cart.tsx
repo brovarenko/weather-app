@@ -1,16 +1,28 @@
 import React from 'react';
 import { Trip } from '@/types/trip.type';
+import clsx from 'clsx';
 
 import styles from './styles.module.css';
 
 interface TripCartProps {
   trip: Trip;
   onSelectTrip: (trip: Trip) => void;
+  selectedTrip: Trip | null;
 }
 
-const TripCart: React.FC<TripCartProps> = ({ trip, onSelectTrip }) => {
+const TripCart: React.FC<TripCartProps> = ({
+  trip,
+  onSelectTrip,
+  selectedTrip,
+}) => {
   return (
-    <div className={styles['trip-card']} onClick={() => onSelectTrip(trip)}>
+    <div
+      className={clsx(
+        styles['trip-card'],
+        selectedTrip?.id === trip.id && styles['selected']
+      )}
+      onClick={() => onSelectTrip(trip)}
+    >
       <img
         src={'src/assets/images/' + trip.photo}
         alt={trip.name}

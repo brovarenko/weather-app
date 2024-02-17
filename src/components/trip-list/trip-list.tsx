@@ -7,13 +7,23 @@ import styles from './styles.module.css';
 interface TripListProps {
   trips: Trip[];
   onSelectTrip: (trip: Trip) => void;
+  selectedTrip: Trip | null;
 }
 
-const TripList: React.FC<TripListProps> = ({ trips, onSelectTrip }) => {
+const TripList: React.FC<TripListProps> = ({
+  trips,
+  onSelectTrip,
+  selectedTrip,
+}) => {
   return (
     <div className={styles['trip-list-container']}>
       {trips.map((trip) => (
-        <TripCart key={trip.id} trip={trip} onSelectTrip={onSelectTrip} />
+        <TripCart
+          key={trip.id}
+          trip={trip}
+          onSelectTrip={onSelectTrip}
+          selectedTrip={selectedTrip}
+        />
       ))}
     </div>
   );
