@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
+import useModal from '../../components/modal/hooks/use-modal.hook';
+import Modal from '../../components/modal/modal';
 
 function App() {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
+  const { showModal, openModal, closeModal } = useModal();
+
   const trips = [
     {
       id: 1,
@@ -40,6 +44,18 @@ function App() {
         onSelectTrip={onSelectTrip}
         selectedTrip={selectedTrip}
       />
+      <div>
+        <button onClick={openModal}>Open Modal</button>
+
+        <Modal
+          showModal={showModal}
+          onCloseModal={closeModal}
+          header={'Create trip'}
+        >
+          <h2>This is a modal content</h2>
+          <p>Some additional information in the modal.</p>
+        </Modal>
+      </div>
     </>
   );
 }
