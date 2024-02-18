@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
-import useModal from '../../components/modal/hooks/use-modal.hook';
-import Modal from '../../components/modal/modal';
 
 function App() {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
-  const { showModal, openModal, closeModal } = useModal();
-
-  const trips = [
+  const [trips, setTrips] = useState<Trip[]>([
     {
       id: 1,
       name: 'Amsterdam',
@@ -30,33 +26,29 @@ function App() {
       startDate: '2023-08-20',
       endDate: '2023-08-25',
     },
-  ];
+  ]);
+
+  const onAddTrip = (newTrip: Trip) => {
+    console.log('Adding new trip:', newTrip);
+
+    setTrips((prevTrips) => [...prevTrips, newTrip]);
+  };
 
   const onSelectTrip = (trip: Trip) => {
     setSelectedTrip(trip);
   };
   console.log(selectedTrip);
   return (
-    <>
+    <div className='fill'>
       <h1>Weather Forecast</h1>
       <TripList
         trips={trips}
         onSelectTrip={onSelectTrip}
         selectedTrip={selectedTrip}
+        onAddTrip={onAddTrip}
       />
-      <div>
-        <button onClick={openModal}>Open Modal</button>
-
-        <Modal
-          showModal={showModal}
-          onCloseModal={closeModal}
-          header={'Create trip'}
-        >
-          <h2>This is a modal content</h2>
-          <p>Some additional information in the modal.</p>
-        </Modal>
-      </div>
-    </>
+      <div></div>
+    </div>
   );
 }
 

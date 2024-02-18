@@ -1,3 +1,10 @@
 .trip-list-container {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.add-trip-btn {
+  width: 300px;
+  height: 200px;
+  margin: 10px;
 }

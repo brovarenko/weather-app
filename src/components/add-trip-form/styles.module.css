@@ -1,0 +1,42 @@
+.add-trip-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 500px;
+}
+
+input,
+select {
+  padding: 10px;
+}
+
+label {
+  margin: 10px 20px;
+}
+
+input,
+select {
+  margin: 5px 0;
+  border: 2px solid #ccc;
+  color: gray;
+}
+
+.add-trip-form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.error {
+  padding: 15px;
+}
+
+.error-mark {
+  color: red;
+}
