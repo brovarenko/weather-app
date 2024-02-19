@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
+import SearchBar from '../../components/search-bar/search-bar';
 
 function App() {
   const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const [trips, setTrips] = useState<Trip[]>([
     {
       id: 1,
@@ -38,11 +40,21 @@ function App() {
     setSelectedTrip(trip);
   };
   console.log(selectedTrip);
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
+
+  const filteredTrips = trips.filter((trip) =>
+    trip.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className='fill'>
       <h1>Weather Forecast</h1>
+      <SearchBar searchTerm={searchTerm} onSearchChange={handleSearch} />
       <TripList
-        trips={trips}
+        trips={filteredTrips}
         onSelectTrip={onSelectTrip}
         selectedTrip={selectedTrip}
         onAddTrip={onAddTrip}

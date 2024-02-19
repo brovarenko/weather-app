@@ -27,6 +27,7 @@ const TripCart: React.FC<TripCartProps> = ({
         src={'src/assets/images/' + trip.photo}
         alt={trip.name}
         className={styles['trip-photo']}
+        width={300}
       />
       <div className={styles['trip-info']}>
         <p className={styles['trip-name']}>{trip.name}</p>
