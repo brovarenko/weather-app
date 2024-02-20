@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import Modal from '../modal/modal';
 import useModal from '../modal/hooks/use-modal.hook';
 import AddTripForm from '../add-trip-form/add-trip-form';
+import { Plus } from 'lucide-react';
 
 interface TripListProps {
   trips: Trip[];
@@ -33,7 +34,9 @@ const TripList: React.FC<TripListProps> = ({
         />
       ))}
       <button className={styles['add-trip-btn']} onClick={openModal}>
-        <div>+</div>
+        <div>
+          <Plus strokeWidth={2.5} />
+        </div>
         <div>Add trip</div>
       </button>
       <Modal

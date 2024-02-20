@@ -2,9 +2,9 @@ import { useState } from 'react';
 import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
 import SearchBar from '../../components/search-bar/search-bar';
+import CurrentWeather from '../../components/current-weather/current-weather';
 
 function App() {
-  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [trips, setTrips] = useState<Trip[]>([
     {
@@ -29,6 +29,7 @@ function App() {
       endDate: '2023-08-25',
     },
   ]);
+  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(trips[0]);
 
   const onAddTrip = (newTrip: Trip) => {
     console.log('Adding new trip:', newTrip);
@@ -39,7 +40,6 @@ function App() {
   const onSelectTrip = (trip: Trip) => {
     setSelectedTrip(trip);
   };
-  console.log(selectedTrip);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -51,15 +51,21 @@ function App() {
 
   return (
     <div className='fill'>
-      <h1>Weather Forecast</h1>
-      <SearchBar searchTerm={searchTerm} onSearchChange={handleSearch} />
-      <TripList
-        trips={filteredTrips}
-        onSelectTrip={onSelectTrip}
-        selectedTrip={selectedTrip}
-        onAddTrip={onAddTrip}
-      />
-      <div></div>
+      <section className='main-section'>
+        <h1>
+          Weather <b>Forecast</b>
+        </h1>
+        <SearchBar searchTerm={searchTerm} onSearchChange={handleSearch} />
+        <TripList
+          trips={filteredTrips}
+          onSelectTrip={onSelectTrip}
+          selectedTrip={selectedTrip}
+          onAddTrip={onAddTrip}
+        />
+      </section>
+      <section>
+        <CurrentWeather cityName={selectedTrip?.name} />
+      </section>
     </div>
   );
 }

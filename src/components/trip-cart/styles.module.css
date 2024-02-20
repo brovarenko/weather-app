@@ -4,17 +4,17 @@
 
 .trip-card {
   margin: 10px;
-  border: 1px solid #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
 }
 
 .trip-card:hover {
-  border: 1px solid blue;
   cursor: pointer;
+  box-shadow: 0 0 5px 1px rgba(0, 89, 190, 0.6);
 }
 
 .selected {
-  border: 1px solid blue;
+  box-shadow: 0 0 6px 3px rgba(0, 89, 190, 0.6);
 }
 
 .trip-info {
@@ -24,6 +24,7 @@
 .trip-name {
   font-size: 1.2rem;
   font-weight: 500;
+  margin: 5px 0;
 }
 
 .trip-dates {

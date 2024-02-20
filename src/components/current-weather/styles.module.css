@@ -1,0 +1,42 @@
+.current-weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  width: 600px;
+  height: 100%;
+  background-color: rgba(0, 65, 119, 0.808);
+  color: aliceblue;
+}
+
+.week {
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+.city-name {
+  font-size: 2rem;
+}
+
+.temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp-number {
+  margin: 10px;
+  font-size: 4rem;
+}
+
+.celsius-icon {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+@media only screen and (max-width: 1200px) {
+  .current-weather-container {
+    width: 300px;
+  }
+}
