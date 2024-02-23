@@ -3,6 +3,7 @@ import TripList from '../../components/trip-list/trip-list';
 import { type Trip } from '@/types/trip.type';
 import SearchBar from '../../components/search-bar/search-bar';
 import CurrentWeather from '../../components/current-weather/current-weather';
+import { TripForecastList } from '../../components/components';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,7 +30,7 @@ function App() {
       endDate: '2023-08-25',
     },
   ]);
-  const [selectedTrip, setSelectedTrip] = useState<Trip | null>(trips[0]);
+  const [selectedTrip, setSelectedTrip] = useState<Trip>(trips[0]);
 
   const onAddTrip = (newTrip: Trip) => {
     console.log('Adding new trip:', newTrip);
@@ -62,9 +63,10 @@ function App() {
           selectedTrip={selectedTrip}
           onAddTrip={onAddTrip}
         />
+        <TripForecastList selectedTrip={selectedTrip} />
       </section>
       <section>
-        <CurrentWeather cityName={selectedTrip?.name} />
+        <CurrentWeather cityName={selectedTrip.name} />
       </section>
     </div>
   );

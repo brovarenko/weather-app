@@ -1,0 +1,14 @@
+.day-list {
+  display: flex;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.day-item-icon {
+  width: 100px;
+}
